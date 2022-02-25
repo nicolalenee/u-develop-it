@@ -20,6 +20,8 @@ router.get('/parties', (req, res) => {
 // route to get a single party 
 router.get('/party/:id', (req, res) => {
   const sql = `SELECT * FROM parties where id = ?`;
+  const params = [req.params.id];
+  
   db.query(sql, params, (err, row) => {
     if (err) {
       res.status(400).json({ error: err.message });
